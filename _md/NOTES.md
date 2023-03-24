@@ -6,7 +6,7 @@
 * **`NOTE:`** please refer to the Mini-Project-21-React-Book-Search-Engine for more information
 
 ## Front-end
-- [x] **`TODO:`** import apollo client and update server.js [link](../client/src/App.js)
+- [ ] **`TODO:`** import apollo client [link](../client/src/App.js)
 - [ ] **`TODO:`** wrap return in `<ApolloProvider client={client}>` [link](../client/src/App.js)
 - [ ] **`TODO:`** create file and write querys for all the data
 - [ ] **`TODO:`** create file and write mutations for all the data
@@ -14,7 +14,7 @@
 
 
 ## Back-end
-- [ ] **`TODO:`** import apollo server [link](../server/server.js)
+- [x] **`TODO:`** import apollo server and update the server.js [link](../server/server.js)
 - [ ] **`TODO:`** create schema folder with typeDefs.js and resolvers.js and index.js
 - [ ] **`TODO:`** inside typeDefs.js write the typeDefs for all the data
 - [ ] **`TODO:`** inside resolvers.js write the resolvers for all the data
