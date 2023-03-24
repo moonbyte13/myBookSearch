@@ -10,7 +10,7 @@
 - [x] **`TODO:`** wrap return in `<ApolloProvider client={client}>` [link](../client/src/App.js)
 - [x] **`TODO:`** create file and write querys for all the data
 - [x] **`TODO:`** create file and write mutations for all the data
-- [ ] **`TODO:`** update the components and pages using the API.js file to use the `useQuery` hook
+- [x] **`TODO:`** update the components and pages using the API.js file to use the `useQuery` hook
 
 
 ## Back-end
