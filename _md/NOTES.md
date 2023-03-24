@@ -15,6 +15,6 @@
 
 ## Back-end
 - [x] **`TODO:`** import apollo server and update the server.js [link](../server/server.js)
-- [ ] **`TODO:`** create schema folder with typeDefs.js and resolvers.js and index.js
-- [ ] **`TODO:`** inside typeDefs.js write the typeDefs for all the data
-- [ ] **`TODO:`** inside resolvers.js write the resolvers for all the data
+- [x] **`TODO:`** create schema folder with typeDefs.js and resolvers.js and index.js
+- [x] **`TODO:`** inside typeDefs.js write the typeDefs for all the data
+- [x] **`TODO:`** inside resolvers.js write the resolvers for all the data
