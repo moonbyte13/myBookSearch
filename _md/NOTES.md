@@ -1,9 +1,9 @@
 # Notes
 
-**`NOTE:`** routes and controllers are replaced by schemas folder
-**`NOTE:`** the `useQuery` hook is used to fetch data from the server
-**`NOTE:`** the `useMutation` hook is used to send data to the server
-**`NOTE:`** please refer to the Mini-Project-21-React-Book-Search-Engine for more information
+* **`NOTE:`** routes and controllers are replaced by schemas folder
+* **`NOTE:`** the `useQuery` hook is used to fetch data from the server
+* **`NOTE:`** the `useMutation` hook is used to send data to the server
+* **`NOTE:`** please refer to the Mini-Project-21-React-Book-Search-Engine for more information
 
 ## Front-end
 - [ ] **`TODO:`** import apollo client [link](../client/src/App.js)
