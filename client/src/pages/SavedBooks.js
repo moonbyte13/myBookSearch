@@ -1,29 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Card, Button, Row, Col } from 'react-bootstrap';
+import React, { useState } from 'react';
+import {
+  Container,
+  Card,
+  Button,
+  Row,
+  Col
+} from 'react-bootstrap';
 import { useQuery, useMutation } from '@apollo/client';
-import { GET_ME, DELETE_BOOK } from '../utils/queries';
-import { removeBookId } from '../utils/localStorage';
+import { GET_ME } from '../utils/queries';
+import { REMOVE_BOOK } from '../utils/mutations';
 import Auth from '../utils/auth';
+import { removeBookId } from '../utils/localStorage';
 
 const SavedBooks = () => {
+  const [userData, setUserData] = useState({});
   const { loading, data } = useQuery(GET_ME);
-  const [userData, setUserData] = useState({
-    username: '',
-    email: '',
-    bookCount: 0,
-    savedBooks: []
-  });
+  const [removeBook] = useMutation(REMOVE_BOOK);
 
-  useEffect(() => {
-    if (data && data.me) {
+  React.useEffect(() => {
+    if (data) {
       setUserData(data.me);
     }
   }, [data]);
 
-  const [deleteBook] = useMutation(DELETE_BOOK, {
-    refetchQueries: [{ query: GET_ME }],
-  });
-
+  // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteBook = async (bookId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -32,21 +32,19 @@ const SavedBooks = () => {
     }
 
     try {
-      await deleteBook({
-        variables: { bookId: bookId },
-      });    
-      setUserData((prevState) => ({
-        ...prevState,
-        savedBooks: prevState.savedBooks.filter((book) => {
-          return book.bookId !== bookId;
-        }),
-      }));
+      const { data } = await removeBook({
+        variables: { bookId }
+      });
+
+      setUserData(data.removeBook.user);
+      // upon success, remove book's id from localStorage
       removeBookId(bookId);
     } catch (err) {
       console.error(err);
     }
   };
 
+  // if data isn't here yet, say so
   if (loading) {
     return <h2>LOADING...</h2>;
   }
@@ -67,8 +65,8 @@ const SavedBooks = () => {
         <Row>
           {userData.savedBooks.map((book) => {
             return (
-              <Col md="4" key={book.bookId}>
-                <Card border='dark'>
+              <Col md="4">
+                <Card key={book.bookId} border='dark'>
                   {book.image ? <Card.Img src={book.image} alt={`The cover for ${book.title}`} variant='top' /> : null}
                   <Card.Body>
                     <Card.Title>{book.title}</Card.Title>
